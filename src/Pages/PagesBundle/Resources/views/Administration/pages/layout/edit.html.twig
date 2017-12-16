@@ -1,0 +1,25 @@
+{% extends 'layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h2>Page edit</h2>
+
+    <div class="span8">
+        {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+            <input class="btn btn-primary" type="submit" value="Edit" />
+        {{ form_end(edit_form) }}
+    </div>
+
+    <div class="span2">
+        <ul class="record_actions" style="list-style: none">
+            <li>
+                <a class="btn btn-default" href="{{ path('adminPages_index') }}">Retour</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+    </div>
+{% endblock %}
