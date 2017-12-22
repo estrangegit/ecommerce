@@ -5,6 +5,7 @@ namespace Ecommerce\EcommerceBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Valid;
 
 class ProduitsType extends AbstractType
 {
@@ -19,7 +20,7 @@ class ProduitsType extends AbstractType
                 ->add('disponible')
                 ->add('tva')
                 ->add('categorie')
-                ->add('image', MediaType::class);
+                ->add('image', MediaType::class, array('constraints' => array(new Valid())));
     }/**
      * {@inheritdoc}
      */

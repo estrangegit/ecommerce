@@ -28,7 +28,7 @@ class Media
      * @ORM\Column(name="file", type="string", length=255)
      *
      * @Assert\NotBlank(message="Merci de télécharger une image (jpg, png).")
-     * @Assert\File(mimeTypes={"image/jpg", "image/jpeg", "image/png"})
+     * @Assert\Image()
      */
     private $file;
 
