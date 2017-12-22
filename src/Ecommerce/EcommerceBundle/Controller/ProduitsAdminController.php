@@ -3,7 +3,9 @@
 namespace Ecommerce\EcommerceBundle\Controller;
 
 use Ecommerce\EcommerceBundle\Entity\Produits;
+use Ecommerce\EcommerceBundle\Services\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -31,7 +33,7 @@ class ProduitsAdminController extends Controller
      * Creates a new produit entity.
      *
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, FileUploader $fileUploader)
     {
         $produit = new Produits();
         $form = $this->createForm('Ecommerce\EcommerceBundle\Form\ProduitsType', $produit);
@@ -39,6 +41,13 @@ class ProduitsAdminController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+//            $file = $produit->getImage()->getFile();
+
+//            $fileName = $fileUploader->upload($file);
+
+//            $produit->getImage()->setFile($fileName);
+
             $em->persist($produit);
             $em->flush();
 
@@ -69,13 +78,27 @@ class ProduitsAdminController extends Controller
      * Displays a form to edit an existing produit entity.
      *
      */
-    public function editAction(Request $request, Produits $produit)
+    public function editAction(Request $request, Produits $produit, FileUploader $fileUploader)
     {
+        $produit->getImage()->setOldFile($produit->getImage()->getFile());
+        $produit->getImage()->setFile(
+            new File($this->getParameter('picture_directory').'/'.$produit->getImage()->getFile())
+        );
+
         $deleteForm = $this->createDeleteForm($produit);
         $editForm = $this->createForm('Ecommerce\EcommerceBundle\Form\ProduitsType', $produit);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+//            $file = $produit->getImage()->getFile();
+
+//            $fileName = $fileUploader->upload($file);
+
+//            unlink($this->getParameter('picture_directory').'/'.$produit->getImage()->getOldFile());
+
+//            $produit->getImage()->setFile($fileName);
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('adminProduits_show', array('id' => $produit->getId()));
@@ -118,7 +141,6 @@ class ProduitsAdminController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('adminProduits_delete', array('id' => $produit->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

@@ -79,6 +79,12 @@ class ProduitsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $produits = $em->getRepository('EcommerceBundle:Produits')->recherche($chaine);
 
+        $produits  = $this->get('knp_paginator')
+            ->paginate($produits,
+                $request->query->get('page', 1)/*page number*/,
+                2/*limit per page*/
+            );
+
         return $this->render('@Ecommerce/Default/produits/layout/produits.html.twig', array('produits' => $produits));
 
     }

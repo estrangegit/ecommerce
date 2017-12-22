@@ -12,6 +12,9 @@ services:
     Ecommerce\EcommerceBundle\Services\GetReference:
         public: true
 
+    Ecommerce\EcommerceBundle\Controller\ProduitsAdminController:
+        tags: ['controller.service_arguments']
+
     Ecommerce\EcommerceBundle\Twig\Extension\:
         resource: '../../Twig/Extension/*'
 
@@ -22,3 +25,17 @@ services:
             - '@session'
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+    Ecommerce\EcommerceBundle\Services\FileUploader:
+        public: true
+        arguments:
+            $targetDir: '%picture_directory%'
+
+
+    Ecommerce\EcommerceBundle\Listener\PictureUploadListener:
+        arguments:
+            $targetDir: '%picture_directory%'
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: preRemove }

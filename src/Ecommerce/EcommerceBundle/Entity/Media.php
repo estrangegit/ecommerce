@@ -3,6 +3,7 @@
 namespace Ecommerce\EcommerceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Media
@@ -24,9 +25,17 @@ class Media
     /**
      * @var string
      *
-     * @ORM\Column(name="path", type="string", length=255)
+     * @ORM\Column(name="file", type="string", length=255)
+     *
+     * @Assert\NotBlank(message="Merci de télécharger une image (jpg, png).")
+     * @Assert\File(mimeTypes={"image/jpg", "image/jpeg", "image/png"})
      */
-    private $path;
+    private $file;
+
+    /**
+     * @var string
+     */
+    private $oldFile;
 
     /**
      * @var string
@@ -47,28 +56,37 @@ class Media
     }
 
     /**
-     * Set path
-     *
-     * @param string $path
-     *
-     * @return Media
+     * @return string
      */
-    public function setPath($path)
+    public function getFile()
     {
-        $this->path = $path;
-
-        return $this;
+        return $this->file;
     }
 
     /**
-     * Get path
-     *
+     * @param string $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+    /**
      * @return string
      */
-    public function getPath()
+    public function getOldFile()
     {
-        return $this->path;
+        return $this->oldFile;
     }
+
+    /**
+     * @param string $oldFile
+     */
+    public function setOldFile($oldFile)
+    {
+        $this->oldFile = $oldFile;
+    }
+
 
     /**
      * Set alt
