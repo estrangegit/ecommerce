@@ -42,12 +42,6 @@ class ProduitsAdminController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
-//            $file = $produit->getImage()->getFile();
-
-//            $fileName = $fileUploader->upload($file);
-
-//            $produit->getImage()->setFile($fileName);
-
             $em->persist($produit);
             $em->flush();
 
@@ -90,14 +84,6 @@ class ProduitsAdminController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-
-//            $file = $produit->getImage()->getFile();
-
-//            $fileName = $fileUploader->upload($file);
-
-//            unlink($this->getParameter('picture_directory').'/'.$produit->getImage()->getOldFile());
-
-//            $produit->getImage()->setFile($fileName);
 
             $this->getDoctrine()->getManager()->flush();
 
