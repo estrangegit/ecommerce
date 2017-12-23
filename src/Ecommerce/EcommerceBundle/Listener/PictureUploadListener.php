@@ -75,8 +75,6 @@ class PictureUploadListener
     public function preRemove(LifecycleEventArgs $args){
         $entity = $args->getEntity();
 
-        dump($entity);
-
         if (!$entity instanceof Media) {
             return;
         }
