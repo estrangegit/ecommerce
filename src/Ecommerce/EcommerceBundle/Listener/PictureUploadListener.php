@@ -4,6 +4,7 @@ namespace Ecommerce\EcommerceBundle\Listener;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
+use Ecommerce\EcommerceBundle\Entity\Categories;
 use Ecommerce\EcommerceBundle\Entity\Produits;
 use Ecommerce\EcommerceBundle\Services\FileUploader;
 use Proxies\__CG__\Ecommerce\EcommerceBundle\Entity\Media;
@@ -55,11 +56,12 @@ class PictureUploadListener
 
     private function uploadFile($entity)
     {
-        if (!$entity instanceof Produits) {
+        if ((!$entity instanceof Produits) && (!$entity instanceof Categories)) {
             return;
         }
 
-        if($entity instanceof Produits){
+        if(($entity instanceof Produits) || ($entity instanceof Categories)){
+
             $file = $entity->getImage()->getFile();
 
             if ($file instanceof UploadedFile) {

@@ -1,0 +1,32 @@
+{% extends 'layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+    <h1>Category</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ category.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ category.nom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul style="list-style: none">
+        <li>
+            <a class="btn btn-default" href="{{ path('adminCategories_index') }}">Retour</a>
+        </li>
+        <li>
+            <a class="btn btn-default" href="{{ path('adminCategories_edit', { 'id': category.id }) }}">Editer</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input class="btn btn-danger" type="submit" value="Supprimer">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
