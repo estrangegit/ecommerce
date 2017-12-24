@@ -17,3 +17,7 @@ RoutingCategoriesAdmin:
 routingCommandes:
     resource: "@EcommerceBundle/Resources/config/routing/routingCommandes.yml"
     prefix: /commandes
+
+RoutingCommandesAdmin:
+    resource: "@EcommerceBundle/Resources/config/routing/routingCommandesAdmin.yml"
+    prefix:   /admin/commandes

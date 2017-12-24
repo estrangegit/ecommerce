@@ -30,23 +30,6 @@ class UtilisateursController extends Controller
             return $this->redirectToRoute('factures');
         }
 
-        $html = $this->render('@Utilisateurs/Default/layout/facturePDF.html.twig', array('facture'=>$facture));
-
-        $html2pdf = new Html2Pdf('P','A4', 'fr');
-
-        $html2pdf->pdf->setAuthor('Vegetable&Fruits');
-        $html2pdf->pdf->setTitle('Facture_'.$facture->getReference());
-        $html2pdf->pdf->setSubject('Facture Vegetable&Fruits');
-        $html2pdf->pdf->setKeywords('Fruits, légumes');
-
-        $html2pdf->pdf->setDisplayMode('real');
-        $html2pdf->writeHTML($html);
-        $html2pdf->output('Facture.pdf');
-
-        $response = new Response();
-        $response->headers->set('Content-Type', 'application/pdf');
-
-        return $response;
-
+        return $this->get('getFacture')->facture($facture);
     }
 }

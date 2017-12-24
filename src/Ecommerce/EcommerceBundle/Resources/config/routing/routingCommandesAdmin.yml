@@ -1,0 +1,8 @@
+adminCommandes_index:
+    path:     /
+    defaults: { _controller: "EcommerceBundle:CommandesAdmin:index" }
+    methods:  GET
+
+adminShowFacture:
+    path:     /facture/pdf/{id}
+    defaults: { _controller: "EcommerceBundle:CommandesAdmin:showFacture" }

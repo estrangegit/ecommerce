@@ -26,6 +26,10 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
 
+    getFacture:
+        public: true
+        class: Ecommerce\EcommerceBundle\Services\GetFacture
+
     Ecommerce\EcommerceBundle\Services\FileUploader:
         public: true
         arguments:
