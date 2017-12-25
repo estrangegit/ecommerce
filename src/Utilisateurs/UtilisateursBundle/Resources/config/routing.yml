@@ -8,3 +8,7 @@ facturesPDF:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+routingUtilisateursAdmin:
+    resource: "@UtilisateursBundle/Resources/config/routing/routingUtilisateursAdmin.yml"
+    prefix : /admin/utilisateurs
