@@ -1,0 +1,38 @@
+{% extends 'layout/layoutAdmin.html.twig' %}
+
+{% block body %}
+    {# @var utilisateur \Utilisateurs\UtilisateursBundle\Entity\Utilisateurs #}
+    <h1>Liste des factures de {{ utilisateur.username }}</h1>
+
+
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Références</th>
+            <th>Date</th>
+            <th>Prix TTC</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if utilisateur.commandes|length == 0 %}
+            <tr>
+                <td colspan="4" style="text-align: center">
+                    Aucune facture actuellement
+                </td>
+            </tr>
+        {% endif %}
+        {% for facture in utilisateur.commandes %}
+            {# @var facture \Ecommerce\EcommerceBundle\Entity\Commandes #}
+            <tr>
+                <td>ref: {{ facture.reference }}</td>
+                <td>{{ facture.date|date('d/m/Y') }}</td>
+                <td>{{ facture.commande.totalTTC }} €</td>
+                <td><a href="{{ path('adminShowFacture', {'id': facture.id}) }}" target="_blank"><i class="icon-download"></i></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
