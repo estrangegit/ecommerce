@@ -16,3 +16,4 @@
 /vendor/*
 !vendor/autoload.php
 /web/bundles/
+/web/media/

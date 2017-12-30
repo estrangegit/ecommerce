@@ -80,7 +80,7 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: '%mailer_transport%'
-    encryption: '%mailer_encrytion%'
+    encryption: '%mailer_encryption%'
     host: '%mailer_host%'
     username: '%mailer_user%'
     password: '%mailer_password%'
@@ -105,3 +105,20 @@ knp_paginator:
     template:
         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_pagination.html.twig     # sliding pagination controls template
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
+
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+
+    filter_sets:
+        cache: ~
+        produitThumb:
+            quality: 80
+            filters:
+                thumbnail: { size: [300, 300], mode: inset }
+
+        produit:
+            quality: 80
+            filters:
+                thumbnail: { size: [470, 470], mode: inset }

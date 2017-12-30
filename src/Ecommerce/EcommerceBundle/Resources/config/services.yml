@@ -9,11 +9,29 @@ services:
         # if you need to do this, you can override this setting on individual services
         public: false
 
+    # makes classes in src/Ecommerce/EcommerceBundle available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    Ecommerce\EcommerceBundle\:
+        resource: '../../../../../src/Ecommerce/EcommerceBundle/*'
+        # you can exclude directories or files
+        # but if a service is unused, it's removed anyway
+        exclude: '../../../../../src/Ecommerce/EcommerceBundle/{Entity,Repository,Tests}'
+
+    # controllers are imported separately to make sure they're public
+    # and have a tag that allows actions to type-hint services
+    Ecommerce\EcommerceBundle\Controller\:
+        resource: '../../../../../src/Ecommerce/EcommerceBundle/Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
     Ecommerce\EcommerceBundle\Services\GetReference:
         public: true
 
-    Ecommerce\EcommerceBundle\Controller\ProduitsAdminController:
-        tags: ['controller.service_arguments']
+#    Ecommerce\EcommerceBundle\Controller\ProduitsAdminController:
+#        tags: ['controller.service_arguments']
+
+#    Ecommerce\EcommerceBundle\Controller\CommandesController:
+#        tags: ['controller.service_arguments']
 
     Ecommerce\EcommerceBundle\Twig\Extension\:
         resource: '../../Twig/Extension/*'

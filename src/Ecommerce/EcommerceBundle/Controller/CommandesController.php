@@ -106,7 +106,7 @@ class CommandesController extends Controller
     /*
      * Cette méthode remplace une api bancaire à définir
      */
-    public function validationCommandeAction(Commandes $commande, SessionInterface $session){
+    public function validationCommandeAction(Commandes $commande, SessionInterface $session, \Swift_Mailer $mailer){
 
         $em = $this->getDoctrine()->getManager();
 
@@ -133,7 +133,7 @@ class CommandesController extends Controller
             ->setBody($this->renderView('EcommerceBundle:Default:SwiftLayout/validationCommande.html.twig',
                 array('utilisateur' => $commande->getUtilisateur())));
 
-        $this->get('mailer')->send($message);
+        $mailer->send($message);
 
         $this->addFlash('success',"Votre commande a été validée avec succès");
 
