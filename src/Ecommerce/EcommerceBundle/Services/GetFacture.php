@@ -37,12 +37,8 @@ class GetFacture
 
         $html2pdf->pdf->setDisplayMode('real');
         $html2pdf->writeHTML($html);
-        $html2pdf->output('Facture.pdf');
 
-        $response = new Response();
-        $response->headers->set('Content-Type', 'application/pdf');
-
-        return $response;
+        return $html2pdf;
     }
 
 }

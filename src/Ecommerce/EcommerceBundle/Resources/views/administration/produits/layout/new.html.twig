@@ -1,14 +1,113 @@
 {% extends 'layout/layoutAdmin.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/new_produits.css') }}" />
+{% endblock %}
+
 {% block body %}
     <h1>Création d'un nouveau produit</h1>
 
     <div class="row">
         <div class="span8">
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <input class="btn btn-primary" type="submit" value="Créer" />
-            {{ form_end(form) }}
+            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+             {{ form_errors(form) }}
+            <div class="row">
+                <div class="span2">
+                    {{ form_label(form.nom) }}
+                </div>
+                <div class="span4">
+                    {{ form_widget(form.nom) }}
+                </div>
+            </div>
+            <div class="row span6">
+                {{ form_errors(form.nom) }}
+            </div>
+            <div class="row">
+                <div class="span2">
+                    {{ form_label(form.description) }}
+                </div>
+                <div class="span4">
+                    {{ form_widget(form.description) }}
+                </div>
+            </div>
+            <div class="row span6">
+                {{ form_errors(form.description) }}
+            </div>
+            <div class="row">
+                <div class="span2">
+                    {{ form_label(form.prix) }}
+                </div>
+                <div class="span4">
+                    {{ form_widget(form.prix) }}
+                </div>
+            </div>
+            <div class="row span6">
+                {{ form_errors(form.prix) }}
+            </div>
+            <div class="row">
+                <div class="span2">
+                    {{ form_label(form.disponible) }}
+                </div>
+                <div class="span4">
+                    {{ form_widget(form.disponible) }}
+                </div>
+            </div>
+            <div class="row span6">
+                {{ form_errors(form.disponible) }}
+            </div>
+            <div class="row">
+                <div class="span2">
+                    {{ form_label(form.tva) }}
+                </div>
+                <div class="span4">
+                    {{ form_widget(form.tva) }}
+                </div>
+            </div>
+            <div class="row span6">
+                {{ form_errors(form.tva) }}
+            </div>
+            <div class="row">
+                <div class="span2">
+                    {{ form_label(form.categorie) }}
+                </div>
+                <div class="span4">
+                    {{ form_widget(form.categorie) }}
+                </div>
+            </div>
+            <div class="row span6">
+                {{ form_errors(form.categorie) }}
+            </div>
+            <div class="row">
+                <div class="span2">
+                    {{ form_label(form.image) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2">
+                    {{ form_label(form.image.file) }}
+                </div>
+                <div class="span4">
+                    {{ form_widget(form.image.file) }}
+                </div>
+            </div>
+            <div class="row span6">
+                {{ form_errors(form.image.file) }}
+            </div>
+            <div class="row">
+                <div class="span2">
+                    {{ form_label(form.image.alt) }}
+                </div>
+                <div class="span4">
+                    {{ form_widget(form.image.alt) }}
+                </div>
+            </div>
+            <div class="row span6">
+                {{ form_errors(form.image.alt) }}
+            </div>
+            <div class="row span8">
+                <input class="btn btn-primary" type="submit" value="Créer" />
+                {{ form_end(form) }}
+            </div>
         </div>
     </div>
 

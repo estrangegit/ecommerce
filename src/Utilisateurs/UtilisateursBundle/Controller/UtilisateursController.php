@@ -30,6 +30,11 @@ class UtilisateursController extends Controller
             return $this->redirectToRoute('factures');
         }
 
-        return $this->get('getFacture')->facture($facture);
+        $this->get('getFacture')->facture($facture)->output('Facture.pdf');
+
+        $reponse = new Response();
+        $reponse->headers->set('Content-Type', 'application/pdf');
+
+        return $reponse;
     }
 }

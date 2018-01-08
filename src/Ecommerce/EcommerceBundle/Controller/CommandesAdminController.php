@@ -4,6 +4,8 @@ namespace Ecommerce\EcommerceBundle\Controller;
 
 use Ecommerce\EcommerceBundle\Entity\Commandes;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+
 
 class CommandesAdminController extends Controller
 {
@@ -24,6 +26,11 @@ class CommandesAdminController extends Controller
             return $this->redirectToRoute('adminCommandes_index');
         }
 
-        return $this->get('getFacture')->facture($facture);
+        $this->get('getFacture')->facture($facture)->output('Facture.pdf');
+
+        $reponse = new Response();
+        $reponse->headers->set('Content-Type', 'application/pdf');
+
+        return $reponse;
     }
 }

@@ -1,0 +1,12 @@
+form ul {
+    list-style: none;
+}
+
+form .span6 {
+    color: red;
+    text-align: center;
+}
+
+form .span2 {
+    text-align: right;
+}

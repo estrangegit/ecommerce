@@ -27,6 +27,7 @@ class Produits
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=125)
+     * @Assert\NotBlank(message="Le champ nom ne peut pas être vide")
      */
     private $nom;
 
@@ -34,6 +35,7 @@ class Produits
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank(message="La description du produit ne peut pas êre vide")
      */
     private $description;
 
@@ -41,6 +43,7 @@ class Produits
      * @var float
      *
      * @ORM\Column(name="prix", type="float")
+     * @Assert\NotBlank(message="Le prix du produit ne peut pas être vide")
      */
     private $prix;
 
@@ -48,6 +51,7 @@ class Produits
      * @var bool
      *
      * @ORM\Column(name="disponible", type="boolean")
+     * @Assert\NotBlank(message="La disponibilité du produit doit être renseignée")
      */
     private $disponible;
 
