@@ -17,3 +17,4 @@
 !vendor/autoload.php
 /web/bundles/
 /web/media/
+/facturation/*
