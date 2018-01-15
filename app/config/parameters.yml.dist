@@ -3,7 +3,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
     database_host: 127.0.0.1
-    database_port: ~
+    database_port: null
     database_name: symfony
     database_user: root
     database_password: ~
@@ -11,12 +11,17 @@ parameters:
     #database_path: '%kernel.project_dir%/var/data/data.sqlite'
 
     mailer_transport: smtp
-    mailer_host: 127.0.0.1
+    mailer_host: smtp.mail.yahoo.fr
     mailer_user: ~
     mailer_password: ~
-    mailer_port: ~
-    mailer_auth_mode: ~
-    mailer_encryption: ~
+    mailer_port: 465
+    mailer_auth_mode: login
+    mailer_encryption: ssl
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+
+    telephone: '02 35 00 00 00'
+    fax: '02 35 00 00 00'
+    adress: 'Paris 75 000 - 3 rue des jardins'
+    pathDefault: 'http://localhost/ecommerce/web/'

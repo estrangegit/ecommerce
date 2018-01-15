@@ -51,9 +51,10 @@ twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
     globals:
-        telephone: 02 35 00 00 00
-        fax: 02 35 01 00 00
-        adresse: Paris 75 000 - 3 rue des jardins
+        telephone: '%telephone%'
+        fax: '%fax%'
+        adresse: '%adress%'
+        pathDefault: '%pathDefault%'
 
 # Doctrine Configuration
 doctrine:
