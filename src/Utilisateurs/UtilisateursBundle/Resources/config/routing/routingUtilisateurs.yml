@@ -1,0 +1,16 @@
+factures:
+    path:     /profile/factures
+    defaults: { _controller: UtilisateursBundle:Utilisateurs:factures }
+
+facturesPDF:
+    path:     /profile/factures/pdf/{id}
+    defaults: { _controller: UtilisateursBundle:Utilisateurs:facturesPDF }
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+getVillesLivraison:
+    path:     /villes/{cp}
+    defaults: { _controller: UtilisateursBundle:Utilisateurs:getVillesLivraison }
+    options:
+        expose: true

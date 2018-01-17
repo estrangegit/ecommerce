@@ -20,8 +20,8 @@ class UtilisateursAdressesType extends AbstractType
                 ->add('prenom', TextType::class, array('label'=>'Prénom'))
                 ->add('telephone', TextType::class, array('label'=>'Téléphone'))
                 ->add('adresse', TextType::class, array('label'=>'Adresse'))
-                ->add('cp', TextType::class, array('label'=>'Code Postal'))
-                ->add('ville', TextType::class, array('label'=>'Ville'))
+                ->add('cp', TextType::class, array('label'=>'Code Postal', 'attr'=>array('class'=>'cp', 'maxlength' => 5)))
+                ->add('ville', TextType::class, array('label'=>'Ville', 'attr'=>array('class'=>'ville')))
                 ->add('pays', TextType::class, array('label'=>'Pays'))
                 ->add('complement', TextType::class, array('label'=>'Complement', 'required'=>false))
                 ->add('submit', SubmitType::class, array('label'=>'Enregistrer'));

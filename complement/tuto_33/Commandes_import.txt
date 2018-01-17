@@ -1,0 +1,8 @@
+Commandes utilisées la génération de l'entité "Villes" suite à l'import d'un script en base de données:
+*******************************************************************************************************
+
+1) Cette première commande génère le fichier de mapping "Villes.orm.yml" au format yml dans le dossier Resources/config/doctrine.
+php bin\console doctrine:mapping:import --force UtilisateursBundle yml --filter="Villes"
+
+2) Cette deuxième commande permet la génération de l'entité "Villes" dans le dossier Entity
+php bin\console doctrine:mapping:convert annotation .\src --filter="Villes"
