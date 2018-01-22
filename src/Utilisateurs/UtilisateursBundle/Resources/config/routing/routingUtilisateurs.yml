@@ -8,9 +8,3 @@ facturesPDF:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-
-getVillesLivraison:
-    path:     /villes/{cp}
-    defaults: { _controller: UtilisateursBundle:Utilisateurs:getVillesLivraison }
-    options:
-        expose: true

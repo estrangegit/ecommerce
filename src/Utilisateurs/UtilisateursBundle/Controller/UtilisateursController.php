@@ -4,10 +4,7 @@ namespace Utilisateurs\UtilisateursBundle\Controller;
 
 use Ecommerce\EcommerceBundle\Entity\Commandes;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Utilisateurs\UtilisateursBundle\Entity\Villes;
-
 
 class UtilisateursController extends Controller
 {
@@ -38,21 +35,4 @@ class UtilisateursController extends Controller
 
         return $reponse;
     }
-
-    public function getVillesLivraisonAction($cp){
-        $em = $this->getDoctrine()->getManager();
-        $ville = $em->getRepository(Villes::class)->findOneBy(array('villeCodePostal'=>$cp));
-
-        $villeNom = '';
-
-        if($ville){
-            $villeNom = $ville->getVilleNom();
-        }else{
-            $villeNom = null;
-        }
-
-        $response = new JsonResponse();
-        return $response->setData(array('ville'=>$villeNom));
-    }
-
 }

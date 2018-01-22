@@ -55,7 +55,9 @@ class PanierController extends Controller
         $utilisateur = $this->container->get('security.token_storage')->getToken()->getUser();
 
         $entity = new UtilisateursAdresses();
-        $form = $this->createForm(UtilisateursAdressesType::class, $entity);
+        $form = $this->createForm(UtilisateursAdressesType::class,
+                                    $entity,
+                                    array('em' => $this->getDoctrine()->getManager()));
 
         $form->handleRequest($request);
 
@@ -69,7 +71,9 @@ class PanierController extends Controller
             unset($form);
 
             $entity = new UtilisateursAdresses();
-            $form = $this->createForm(UtilisateursAdressesType::class, $entity);
+            $form = $this->createForm(UtilisateursAdressesType::class,
+                                            $entity,
+                                            array('em' => $this->getDoctrine()->getManager()));
 
             $this->redirectToRoute('livraison');
         }
@@ -99,7 +103,6 @@ class PanierController extends Controller
 
     public function validationAction(SessionInterface $session, Request $request)
     {
-
         if($request->getMethod() == 'POST')
             $this->setLivraisonOnSession($session, $request);
 
