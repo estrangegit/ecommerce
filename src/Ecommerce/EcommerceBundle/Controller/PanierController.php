@@ -52,6 +52,8 @@ class PanierController extends Controller
 
     public function livraisonAction(Request $request)
     {
+        $titre = $this->get('translator')->trans('text.titre');
+
         $utilisateur = $this->container->get('security.token_storage')->getToken()->getUser();
 
         $entity = new UtilisateursAdresses();
@@ -79,7 +81,8 @@ class PanierController extends Controller
         }
 
         return $this->render('@Ecommerce/Default/panier/layout/livraison.html.twig', array('form'=>$form->createView(),
-                                                                                                'utilisateur'=>$utilisateur));
+                                                                                                'utilisateur'=>$utilisateur,
+                                                                                                'titre' => $titre));
     }
 
     public function setLivraisonOnSession(SessionInterface $session, Request $request){

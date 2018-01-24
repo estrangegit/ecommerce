@@ -11,7 +11,7 @@ supprimer:
     defaults: { _controller: EcommerceBundle:Panier:supprimer }
 
 livraison:
-    path:     /livraison
+    path:     /{_locale}/livraison
     defaults: { _controller: EcommerceBundle:Panier:livraison }
 
 validation:

@@ -4,13 +4,13 @@
 <div class="container">
     <div class="row">
         <div class="span12">
-            <h2>Livraison</h2>
+            <h2>{{ titre }}</h2>
             <div id="collapseOne" class="accordion-body collapse in">
                 <div class="accordion-inner">
                     <div class="span4">
                         {% if utilisateur.adresses|length != 0 %}
                         <form action="{{ path('validation') }}" method="POST">
-                            <h4>Adresse de livraison</h4>
+                            <h4>{{ 'title.shipping_address' | transchoice(utilisateur.adresses | length) }}</h4>
 
                             {% for adresse in utilisateur.adresses %}
                                 <label class="radio">
@@ -33,13 +33,13 @@
 
                             <br />
 
-                            <button class="btn btn-primary">Valider mes adresses</button>
+                            <button class="btn btn-primary">{{ 'address_validation' | trans }}</button>
                         </form>
                         {% endif %}
                     </div>
 
                     <div class="span4 offset2">
-                        <h4>Ajouter une nouvelle adresse</h4>
+                        <h4>{{ 'title.add_address' | trans }}</h4>
                         {{ form_start(form, {'action': path('livraison'), 'method': 'POST'}) }}
                             {{ form_row(form.nom) }}
                             {{ form_row(form.prenom) }}

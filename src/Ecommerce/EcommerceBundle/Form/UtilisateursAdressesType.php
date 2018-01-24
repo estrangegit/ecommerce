@@ -21,7 +21,7 @@ class UtilisateursAdressesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom', TextType::class, array('label'=>'Nom'))
+        $builder->add('nom', TextType::class, array('label'=>'label.name'))
                 ->add('prenom', TextType::class, array('label'=>'Prénom'))
                 ->add('telephone', TextType::class, array('label'=>'Téléphone'))
                 ->add('adresse', TextType::class, array('label'=>'Adresse'))
