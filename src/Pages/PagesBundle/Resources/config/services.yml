@@ -1,4 +1,21 @@
 services:
-#    pages.example:
-#        class: Pages\PagesBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+
+    urlCheckerValidator:
+        class: Pages\PagesBundle\Validator\Constraints\UrlCheckerValidator
+        arguments:
+            - '@urlCheckerService'
+        tags:
+            - { name: validator.constraint_validator, alias: validatorCheckUrl }
+
+    urlCheckerService:
+        class: Pages\PagesBundle\Service\UrlCheckerService
+        public: true

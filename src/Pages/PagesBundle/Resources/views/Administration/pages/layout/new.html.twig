@@ -3,10 +3,26 @@
 {% block body %}
     <h2>Creation d'une nouvelle page</h2>
 
-    <div class="span8   ">
+    <div class="span8">
         {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input class="btn btn-primary" type="submit" value="Create" />
+        {{ form_errors(form) }}
+
+        <div>
+            {{ form_label(form.titre) }}
+            <span class="alert-danger">{{ form_errors(form.titre) }}</span>
+            {{ form_widget(form.titre) }}
+        </div>
+
+        <div>
+            {{ form_label(form.contenu) }}
+            <span class="alert-danger">{{ form_errors(form.contenu) }}</span>
+            {{ form_widget(form.contenu) }}
+        </div>
+
+        <div>
+            <input class="btn btn-primary" type="submit" value="Créer la page" />
+        </div>
+
         {{ form_end(form) }}
     </div>
     <div class="span2">
