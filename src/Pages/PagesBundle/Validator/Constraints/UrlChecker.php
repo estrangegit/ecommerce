@@ -11,4 +11,9 @@ use Symfony\Component\Validator\Constraint;
 class UrlChecker extends Constraint
 {
     public $message = "La page contient des liens non valides";
+
+    public function validatedBy()
+    {
+        return 'validatorCheckUrl';
+    }
 }
