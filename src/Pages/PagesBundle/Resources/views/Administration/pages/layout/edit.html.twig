@@ -5,8 +5,24 @@
 
     <div class="span8">
         {{ form_start(edit_form) }}
-            {{ form_widget(edit_form) }}
+        {{ form_errors(edit_form) }}
+
+        <div>
+            {{ form_label(edit_form.titre) }}
+            <span class="alert-danger">{{ form_errors(edit_form.titre) }}</span>
+            {{ form_widget(edit_form.titre) }}
+        </div>
+
+        <div>
+            {{ form_label(edit_form.contenu) }}
+            <span class="alert-danger">{{ form_errors(edit_form.contenu) }}</span>
+            {{ form_widget(edit_form.contenu) }}
+        </div>
+
+        <div>
             <input class="btn btn-primary" type="submit" value="Edit" />
+        </div>
+
         {{ form_end(edit_form) }}
     </div>
 
