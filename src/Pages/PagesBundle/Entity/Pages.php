@@ -2,8 +2,10 @@
 
 namespace Pages\PagesBundle\Entity;
 
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 use Pages\PagesBundle\Validator\Constraints as CustomAssert;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Pages
@@ -21,6 +23,33 @@ class Pages
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+
+    /**
+     * @var DateTime
+     *
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    private $creationDate;
+
+
+    /**
+     * @var DateTime
+     *
+     * @Gedmo\Timestampable(on="update")
+     * @ORM\Column(type="datetime")
+     */
+    private $updateDate;
+
+
+    /**
+     * @var DateTime
+     *
+     * @Gedmo\Timestampable(on="change", field={"titre"})
+     * @ORM\Column(type="datetime")
+     */
+    private $titleUpdateDate;
 
     /**
      * @var string
