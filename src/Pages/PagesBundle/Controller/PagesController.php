@@ -14,10 +14,10 @@ class PagesController extends Controller
         return $this->render('@Pages/Default/pages/modulesUsed/menu.html.twig', array('pages'=>$pages));
     }
 
-    public function pageAction($id)
+    public function pageAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
-        $page = $em->getRepository('PagesBundle:Pages')->find($id);
+        $page = $em->getRepository('PagesBundle:Pages')->findOneBySlug($slug);
 
         if(!$page) throw $this->createNotFoundException("La page n'existe pas!");
 

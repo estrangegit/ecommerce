@@ -24,6 +24,12 @@ class Pages
      */
     private $id;
 
+    /**
+     * @Gedmo\Slug(fields={"creationDate", "titre"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
+
 
     /**
      * @var DateTime
@@ -42,12 +48,11 @@ class Pages
      */
     private $updateDate;
 
-
     /**
      * @var DateTime
      *
      * @Gedmo\Timestampable(on="change", field={"titre"})
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $titleUpdateDate;
 
@@ -122,6 +127,16 @@ class Pages
     public function getContenu()
     {
         return $this->contenu;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }
 
